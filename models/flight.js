@@ -11,10 +11,8 @@ const flightSchema = new Schema({
   flightNo: { type: Number, min: 10, max: 9999 },
   departs: {
     type: Date,
-    default: () => {
-      const oneYearFromNow = new Date();
-      oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
-      return oneYearFromNow;
+    default: function () {
+      return Date.now() + 31536000000;
     },
   },
 });
